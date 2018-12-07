@@ -1,3 +1,9 @@
+ # -*- coding: utf-8 -*-
+"""
+Éditeur de Spyder
+
+Ceci est un script temporaire.
+"""
 bateau11 = 5
 bateau12 = 4
 bateau13 = 4
@@ -173,9 +179,16 @@ def testbateau1(player2, bateau11, bateau12, bateau13, bateau14, bateau15, batea
         print('plouf')
     return
 
-
+def testplateaubat(lignebat,colonnebat,g):
+    if g==1:
+        if lignebat==
+    
 
 def aleatoirebateau(P):
-    lignebat=radint(0,10)
-    colonnebat= radint(0,10)
+    g=0
+    for i in range (6):
+    if g==1:
+        lignebat=radint(0,10)
+        colonnebat= radint(0,10)
+        
     
