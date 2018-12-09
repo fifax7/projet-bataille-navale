@@ -1,9 +1,5 @@
  # -*- coding: utf-8 -*-
 """
-Éditeur de Spyder
-
-Ceci est un script temporaire.
-"""
 bateau11 = 5
 bateau12 = 4
 bateau13 = 4
@@ -21,7 +17,7 @@ a = 0
 
 lettre = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 chiifre = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-direction = ['bas', 'haut', 'droite', 'gauche']
+direction = []
 
 class position:
     def __init__(self, nocolonne, noligne,noposition):
@@ -97,16 +93,16 @@ def positionbateaujoeur(installer, a):
     if 5 <= a < 9:
         a = a + 1
         bat12.append(installer)
-    if 9 <= a < 12:
+    elif 9 <= a < 12:
         a = a + 1
         bat13.append(installer)
-    if 12 <= a < 15:
+    elif 12 <= a < 15:
         a = a + 1
         bat14.append(installer)
-    if 15 <= a < 18:
+    elif 15 <= a < 18:
         a = a + 1
         bat15.append(installer)
-    if 18 <= a < 21:
+    elif 18 <= a < 21:
         a = a + 1
         bat16.append(installer)
     return
@@ -118,27 +114,27 @@ def testbateau2(player1, bateau21, bateau22, bateau23, bateau24, bateau25, batea
         bateau21 = bateau21 - 1
         if bateau21 == 0:
             print('tu as coulé le bateau1')
-    if player1 in bat22:
+    elif player1 in bat22:
         bateau22 = bateau22 - 1
         if bateau22 == 0:
             print('tu as coulé le bateau2')
-    if player1 in bat23:
+    elif player1 in bat23:
         bateau23 = bateau23 - 1
         if bateau23 == 0:
             print('tu as coulé le bateau3')
-    if player1 in bat24:
+    elif player1 in bat24:
         bateau24 = bateau24 - 1
         if bateau24 == 0:
             print('tu as coulé le bateau4')
-    if player1 in bat25:
+    elif player1 in bat25:
         bateau25 = bateau25 - 1
         if bateau25 == 0:
             print('tu as coulé le bateau5')
-    if player1 in bat26:
+    elif player1 in bat26:
         bateau26 = bateau26 - 1
         if bateau26 == 0:
             print('tu as coulé le bateau6')
-    if bat21 == 0 and bat22 == 0 and bat23 == 0 and bat24 == 0 and bat25 == 0 and bat26 == 0:
+    elif bat21 == 0 and bat22 == 0 and bat23 == 0 and bat24 == 0 and bat25 == 0 and bat26 == 0:
         print('tu as gagné!!!')
         sys.exit(0)
     else:
@@ -152,43 +148,51 @@ def testbateau1(player2, bateau11, bateau12, bateau13, bateau14, bateau15, batea
         bateau11 = bateau11 - 1
         if bateau11 == 0:
             print('ton bateau1 a été coulé')
-    if player2 in bat12:
+    elif player2 in bat12:
         bateau12 = bateau12 - 1
         if bateau12 == 0:
             print('ton bateau2 a été coulé')
-    if player2 in bat13:
+    elif player2 in bat13:
         bateau13 = bateau13 - 1
         if bateau13 == 0:
             print('ton bateau3 a été coulé')
-    if player2 in bat14:
+    elif player2 in bat14:
         bateau14 = bateau14 - 1
         if bateau14 == 0:
             print('ton bateau4 a été coulé')
-    if player2 in bat15:
+    elif player2 in bat15:
         bateau15 = bateau15 - 1
         if bateau15 == 0:
             print('ton bateau5 a été coulé')
-    if player2 in bat16:
+    elif player2 in bat16:
         bateau16 = bateau16 - 1
         if bateau16 == 0:
             print('ton bateau6 a été coulé')
-    if bat11 == 0 and bat12 == 0 and bat13 == 0 and bat14 == 0 and bat15 == 0 and bat16 == 0:
+    elif bat11 == 0 and bat12 == 0 and bat13 == 0 and bat14 == 0 and bat15 == 0 and bat16 == 0:
         print('tu as gagné!!!')
         sys.exit(0)
     else:
         print('plouf')
     return
 
-def testplateaubat(lignebat,colonnebat,g):
-    if g==1:
-        if lignebat==
-    
+def checkbateau:
 
-def aleatoirebateau(P):
-    g=0
-    for i in range (6):
-    if g==1:
-        lignebat=radint(0,10)
-        colonnebat= radint(0,10)
-        
+
+def aleatoirebateau(P,bateau2):
+    lignebat=radint(0,10)
+    colonnebat= radint(0,10)
+    if liste.count(P[lignebat][colonnebat])==1
+        j='erreur'
+    while j=!'erreur':
+        if 0+bateau2<=lignebat:
+        direction.append('gauche')
+        if 10-bateau>=lignebat:
+        direction.append('droite')
+        if 0+bateau2<=colonnebat:
+        direction.append('haut')
+        if 10-bateau2>=colonnebat:
+        direction.append('bas')
     
+    import random
+    n=ramdom.choice(direction)
+    if n==gauche
