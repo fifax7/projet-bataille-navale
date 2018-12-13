@@ -1,30 +1,16 @@
- # -*- coding: utf-8 -*-
-"""
-bateau11 = 5
-bateau12 = 4
-bateau13 = 4
-bateau14 = 3
-bateau15 = 3
-bateau16 = 3
-bateau21 = 5
-bateau22 = 4
-bateau23 = 4
-bateau24 = 3
-bateau25 = 3
-bateau26 = 3
-
-a = 0
-
-lettre = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-chiifre = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-direction = []
-
-class position:
-    def __init__(self, nocolonne, noligne,noposition):
-        self.nocolonne = nocolonne
-        self.noligne = noligne
-        self.noposition= noposition
-
+import random
+bat11=[]
+bat12=[]
+bat13=[]
+bat14=[]
+bat15=[]
+bat16=[]
+bat21=[]
+bat22=[]
+bat23=[]
+bat24=[]
+bat25=[]
+bat26=[]
 P = [['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10'],
      ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10'],
      ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'],
@@ -35,81 +21,126 @@ P = [['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10'],
      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9', 'h10'],
      ['i1', 'i2', 'i3', 'i4', 'i5', 'i6', 'i7', 'i8', 'i9', 'i10'],
      ['j1', 'j2', 'j3', 'j4', 'j5', 'j6', 'j7', 'j8', 'j9', 'j10']]
+installer=[]
+direction=[]
 
+def placezbateau(P):
+    aleatoirebateau(P,5)
+    aleatoirebateau(P,4)
+    aleatoirebateau(P,4)
+    aleatoirebateau(P,3)
+    aleatoirebateau(P,3)
+    aleatoirebateau(P,3)
+    
+def aleatoirebateau(P,bateau2):
+    import random
+    k=1
+    l=1
+    direction=[]
+    while l==1:
+        j=0
+        lignebat= random.randint(0,9)
+        colonnebat= random.randint(0,9)
+        print(lignebat,colonnebat)
+        if installer.count(P[lignebat][colonnebat])==1:
+            j='erreur'
+        if j!='erreur':
+            if 0+bateau2<=lignebat:
+                k=0
+                ligne=lignebat
+                for i in range (1,bateau2):
+                    lignes=ligne-1
+                    if installer.count(P[lignes][colonnebat])==1:
+                        k='erreur'
+                if k!='erreur':
+                    direction.append('gauche')
+                    print(direction)
+                    l=2
+            if 10-bateau2>=lignebat:
+                k=0
+                ligne=lignebat
+                for i in range (1,bateau2):
+                    lignes=ligne+1
+                    if installer.count(P[lignes][colonnebat])==1:
+                        k='erreur'
+                if k!='erreur':
+                    direction.append('droite')
+                    print(direction)
+            if 0+bateau2<=colonnebat:
+                k=0
+                colonne=colonnebat
+                for i in range (1,bateau2):
+                    colonnes=colonne-1
+                    if installer.count(P[lignebat][colonnes])==1:
+                        k='erreur'
+                if k!='erreur':
+                    direction.append('haut')
+                    print(direction)
+                    l=2
+            if 10-bateau2>=colonnebat:
+                k=0
+                colonne=colonnebat
+                for i in range (1,bateau2):
+                    colonnes=colonne+1
+                    if installer.count(P[lignebat][colonnes])==1:
+                        k='erreur'
+                if k!='erreur':
+                    direction.append('bas')
+                    print(direction)
+                    l=2
 
-basecoordonne = {coordonnes('A', '1', 'a1'), coordonnes('A', '2', 'a2'), coordonnes('A', '3', 'a3'),
-                 coordonnes('A', '4', 'a4'), coordonnes('A', '5', 'a5'), coordonnes('A', '6', 'a6'),
-                 coordonnes('A', '7', 'a7'), coordonnes('A', '8', 'a8'), coordonnes('A', '9', 'a9'),
-                 coordonnes('A', '10', 'a10'),
-                 coordonnes('B', '1', 'b1'), coordonnes('B', '2', 'b2'), coordonnes('B', '3', 'b3'),
-                 coordonnes('B', '4', 'b4'), coordonnes('B', '5', 'b5'), coordonnes('B', '6', 'b6'),
-                 coordonnes('B', '7', 'b7'), coordonnes('B', '8', 'b8'), coordonnes('B', '9', 'b9'),
-                 coordonnes('B', '10', 'b10'),
-                 coordonnes('C', '1', 'c1'), coordonnes('C', '2', 'c2'), coordonnes('C', '3', 'c3'),
-                 coordonnes('C', '4', 'c4'), coordonnes('C', '5', 'c5'), coordonnes('C', '6', 'c6'),
-                 coordonnes('C', '7', 'c7'), coordonnes('C', '8', 'c8'), coordonnes('C', '9', 'c9'),
-                 coordonnes('C', '10', 'c10'),
-                 coordonnes('D', '1', 'd1'), coordonnes('D', '2', 'd2'), coordonnes('D', '3', 'd3'),
-                 coordonnes('D', '4', 'd4'), coordonnes('D', '5', 'd5'), coordonnes('D', '6', 'd6'),
-                 coordonnes('D', '7', 'd7'), coordonnes('D', '8', 'd8'), coordonnes('D', '9', 'd9'),
-                 coordonnes('D', '10', 'd10'),
-                 coordonnes('E', '1', 'e1'), coordonnes('E', '2', 'e2'), coordonnes('E', '3', 'e3'),
-                 coordonnes('E', '4', 'e4'), coordonnes('E', '5', 'e5'), coordonnes('E', '6', 'e6'),
-                 coordonnes('E', '7', 'e7'), coordonnes('E', '8', 'e8'), coordonnes('E', '9', 'e9'),
-                 coordonnes('E', '10', 'e10'),
-                 coordonnes('F', '1', 'f1'), coordonnes('F', '2', 'f2'), coordonnes('F', '3', 'f3'),
-                 coordonnes('F', '4', 'f4'), coordonnes('F', '5', 'f5'), coordonnes('F', '6', 'f6'),
-                 coordonnes('F', '7', 'f7'), coordonnes('F', '8', 'f8'), coordonnes('F', '9', 'f9'),
-                 coordonnes('F', '10', 'f10'),
-                 coordonnes('G', '1', 'g1'), coordonnes('G', '2', 'g2'), coordonnes('G', '3', 'g3'),
-                 coordonnes('G', '4', 'g4'), coordonnes('G', '5', 'g5'), coordonnes('G', '6', 'g6'),
-                 coordonnes('G', '7', 'g7'), coordonnes('G', '8', 'g8'), coordonnes('G', '9', 'g9'),
-                 coordonnes('G', '10', 'g10'),
-                 coordonnes('H', '1', 'h1'), coordonnes('H', '2', 'h2'), coordonnes('H', '3', 'h3'),
-                 coordonnes('H', '4', 'h4'), coordonnes('H', '5', 'h5'), coordonnes('H', '6', 'h6'),
-                 coordonnes('H', '7', 'h7'), coordonnes('H', '8', 'h8'), coordonnes('H', '9', 'h9'),
-                 coordonnes('F', '10', 'h10'),
-                 coordonnes('I', '1', 'i1'), coordonnes('I', '2', 'i2'), coordonnes('I', '3', 'i3'),
-                 coordonnes('I', '4', 'i4'), coordonnes('I', '5', 'i5'), coordonnes('I', '6', 'i6'),
-                 coordonnes('I', '7', 'i7'), coordonnes('I', '8', 'i8'), coordonnes('I', '9', 'i9'),
-                 coordonnes('I', '10', 'i10'),
-                 coordonnes('J', '1', 'j1'), coordonnes('J', '2', 'j2'), coordonnes('J', '3', 'j3'),
-                 coordonnes('J', '4', 'j4'), coordonnes('J', '5', 'j5'), coordonnes('J', '6', 'j6'),
-                 coordonnes('J', '7', 'j7'), coordonnes('J', '8', 'j8'), coordonnes('J', '9', 'j9'),
-                 coordonnes('J', '10', 'j10')},
+    import random
+        
+    n= random.choice(direction)
+    print(n)
+    if n=='gauche':
+        ligne=lignebat
+        for i in range (0,bateau2):
+            lignes=ligne-i
+            installer.append(P[lignes][colonnebat])
+            print(installer)
+    if n=='droite':
+        ligne=lignebat
+        for i in range (0,bateau2):
+            lignes=ligne+i
+            installer.append(P[lignes][colonnebat])
+            print(installer)
+    if n=='haut':
+        colonne=colonnebat
+        for i in range (0,bateau2):
+            colonnes=colonne-i
+            installer.append(P[lignebat][colonnes])
+            print(installer)
+    if n=='bas':
+        colonne=colonnebat
+        for i in range (0,bateau2):
+            colonnes=colonne+i
+            installer.append(P[lignebat][colonnes])
+            print(installer)
+   
+def positionbateaujoueur(installer,a):
+    if a==1:
+        bat11.append(installer[0:5])
+        bat12.append(installer[5:9])
+        bat13.append(installer[9:13])
+        bat14.append(installer[13:16])
+        bat15.append(installer[16:19])
+        bat16.append(installer[19:22])
+    if a==2:
+        bat21.append(installer[0:5])
+        bat22.append(installer[5:9])
+        bat23.append(installer[9:13])
+        bat24.append(installer[13:16])
+        bat25.append(installer[16:19])
+        bat26.append(installer[19:22])
 
-
-def positionbateaujoeur(installer, a):
-    bat11 = []
-    bat12 = []
-    bat13 = []
-    bat14 = []
-    bat15 = []
-    bat16 = []
-
-    while a < 5:
-        a = a + 1
-        bat11.append(installer)
-    if 5 <= a < 9:
-        a = a + 1
-        bat12.append(installer)
-    elif 9 <= a < 12:
-        a = a + 1
-        bat13.append(installer)
-    elif 12 <= a < 15:
-        a = a + 1
-        bat14.append(installer)
-    elif 15 <= a < 18:
-        a = a + 1
-        bat15.append(installer)
-    elif 18 <= a < 21:
-        a = a + 1
-        bat16.append(installer)
-    return
-
+placezbateau(P)
+positionbateaujoueur(installer,1)
+print(bat11,bat12,bat13,bat14,bat15,bat16)
 
 def testbateau2(player1, bateau21, bateau22, bateau23, bateau24, bateau25, bateau26,
                 bat21, bat22, bat23, bat24, bat25, bat26, ):
+    global bateau21, bateau22, bateau23, bateau24, bateau25, bateau26
     if player1 in bat21:
         bateau21 = bateau21 - 1
         if bateau21 == 0:
@@ -139,11 +170,10 @@ def testbateau2(player1, bateau21, bateau22, bateau23, bateau24, bateau25, batea
         sys.exit(0)
     else:
         print('plouf')
-    return
-
 
 def testbateau1(player2, bateau11, bateau12, bateau13, bateau14, bateau15, bateau16,
                 bat11, bat12, bat13, bat14, bat15, bat16, ):
+    global bateau11, bateau12, bateau13, bateau14, bateau15, bateau16
     if player2 in bat11:
         bateau11 = bateau11 - 1
         if bateau11 == 0:
@@ -173,26 +203,3 @@ def testbateau1(player2, bateau11, bateau12, bateau13, bateau14, bateau15, batea
         sys.exit(0)
     else:
         print('plouf')
-    return
-
-def checkbateau:
-
-
-def aleatoirebateau(P,bateau2):
-    lignebat=radint(0,10)
-    colonnebat= radint(0,10)
-    if liste.count(P[lignebat][colonnebat])==1
-        j='erreur'
-    while j=!'erreur':
-        if 0+bateau2<=lignebat:
-        direction.append('gauche')
-        if 10-bateau>=lignebat:
-        direction.append('droite')
-        if 0+bateau2<=colonnebat:
-        direction.append('haut')
-        if 10-bateau2>=colonnebat:
-        direction.append('bas')
-    
-    import random
-    n=ramdom.choice(direction)
-    if n==gauche
